@@ -1,20 +1,32 @@
+const container = document.querySelector('.container')
+const date = document.querySelector('#date')
+document.querySelector('.open-navbar-icon').addEventListener('click', () => {
+  container.classList.add('change')
+})
 
-const navbar = document.querySelector('#nav')
-const navBtn =document.querySelector(".btn-toggle");
+document.querySelector('.close-navbar-icon').addEventListener('click', () => {
+  container.classList.remove('change')
+})
 
-const closeBtn = document.querySelector('.aside-btn')
-const sidebar = document.querySelector('.sidebar');
-window.addEventListener('scroll', function () {
-  if (window.pageYOffset > 80) {
-    navbar.classList.add('navbar-fixed')
-  } else {
-    navbar.classList.remove('navbar-fixed')
+const colors = [ '#C6C013','#008148', '#EF2917']
+
+let i = 0
+
+Array.from(document.querySelectorAll('.nav-link')).forEach((item) => {
+  item.style.cssText = `background-color: ${colors[i++]}`
+})
+
+Array.from(document.querySelectorAll('.navigation-button')).forEach((item) => {
+  item.onclick = () => {
+    item.parentElement.parentElement.classList.toggle('change')
   }
 })
-navBtn.addEventListener("click",function(){
- sidebar.classList.toggle("show-toggle")
-})
+date.innerHTML = new Date().getFullYear()
 
-closeBtn.addEventListener('click', function () {
-  sidebar.classList.toggle('show-toggle')
+
+// Aos
+AOS.init({
+  offset: 400, // offset (in px) from the original trigger point
+  delay: 0, // values from 0 to 3000, with step 50ms
+  duration: 1000, // values from 0 to 3000, with step 50ms
 })
