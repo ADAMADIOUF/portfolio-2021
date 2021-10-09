@@ -1,3 +1,5 @@
+
+
 const container = document.querySelector('.container')
 const date = document.querySelector('#date')
 document.querySelector('.open-navbar-icon').addEventListener('click', () => {
